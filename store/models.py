@@ -16,7 +16,22 @@ class Product(models.Model):
     modified_date   = models.DateTimeField(auto_now=True)
 
     def get_url(self):
+        """
+        Generate the URL for this product's detail page.
+        
+        This method creates a URL that points to the product detail view
+        using the product's category slug and product slug.
+        
+        Returns:
+            str: The URL path for the product detail page
+        """
         return reverse('product_detail', args = [self.category.slug, self.slug])
 
     def __str__(self):
+        """
+        Return a string representation of the Product instance.
+        
+        Returns:
+            str: The product name
+        """
         return self.product_name
